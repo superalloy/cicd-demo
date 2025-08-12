@@ -13,10 +13,10 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        python -m venv .venv
+                        python3 -m venv .venv
                         source .venv/bin/activate
-                        pip install -r requirements.txt
-                        pip install -r test-requirements.txt
+                        pip3 install -r requirements.txt
+                        pip3 install -r test-requirements.txt
                     '''
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
                 script {
                     sh '''
                         source .venv/bin/activate
-                        pip install flake8
+                        pip3 install flake8
                         flake8 .
                     '''
                 }
