@@ -11,7 +11,7 @@ pipeline {
         stage('Setup env') {
             agent {
                 docker {
-                    image 'python:3.11-alpine'
+                    image 'python:2-alpine'
                 }
             }
             steps {
@@ -27,7 +27,7 @@ pipeline {
         stage('lint') {
             agent {
                 docker {
-                    image 'python:3.11-alpine'
+                    image 'python:2-alpine'
                 }
             }
             steps {
