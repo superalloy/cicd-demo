@@ -25,9 +25,7 @@ pipeline {
         stage('lint') {
             agent any
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                
-                // warnError('Optional: Command failed but pipeline continues') {
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
                     script {
                         sh '''
                             source .venv/bin/activate
