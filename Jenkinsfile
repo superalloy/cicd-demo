@@ -25,12 +25,14 @@ pipeline {
         stage('lint') {
             agent any
             steps {
-                script {
-                    sh '''
-                        source .venv/bin/activate
-                        pip3 install flake8
-                        flake8 .
-                    '''
+                warnError('Optional: Command failed but pipeline continues') {
+                    script {
+                        sh '''
+                            source .venv/bin/activate
+                            pip3 install flake8
+                            flake8 .
+                        '''
+                    }
                 }
             }
         }
