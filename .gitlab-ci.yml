@@ -1,0 +1,32 @@
+image: python:3.11
+
+stages:
+  - install
+  - lint
+  - test
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+before_script:
+  - python -m venv venv
+  - source venv/bin/activate
+  - pip install --upgrade pip
+  - pip install -r requirements.txt
+
+install:
+  stage: install
+  script:
+    - echo "Dependencies installed"
+
+lint:
+  stage: lint
+  script:
+    - pip install flake8
+    - flake8 .
+
+test:
+  stage: test
+  script:
+    - pip install pytest
+    - pytest tests/
