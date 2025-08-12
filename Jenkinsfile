@@ -22,9 +22,7 @@ pipeline {
 
         stage('lint') {
             agent {
-                docker {
-                    image 'python:2-alpine'
-                }
+                any
             }
             steps {
                 script {
