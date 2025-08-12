@@ -9,7 +9,7 @@ pipeline {
         // }
 
         stage('Setup env') {
-            agent { any }
+            agent any 
             steps {
                 script {
                     sh '''
@@ -21,9 +21,7 @@ pipeline {
         }
 
         stage('lint') {
-            agent {
-                any
-            }
+            agent any
             steps {
                 script {
                     sh '''
