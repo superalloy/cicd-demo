@@ -9,11 +9,7 @@ pipeline {
         // }
 
         stage('Setup env') {
-            agent {
-                docker {
-                    image 'python:2-alpine'
-                }
-            }
+            agent { any }
             steps {
                 script {
                     sh '''
