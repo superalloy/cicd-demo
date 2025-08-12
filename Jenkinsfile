@@ -1,14 +1,19 @@
 pipeline {
-    agent any
+    agent none
 
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/superalloy/cicd-demo.git', branch: 'main'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         git url: 'https://github.com/superalloy/cicd-demo.git', branch: 'main'
+        //     }
+        // }
 
         stage('Setup env') {
+            agent {
+                docker {
+                    image 'python:3.11-alpine'
+                }
+            }
             steps {
                 script {
                     sh '''
@@ -20,9 +25,15 @@ pipeline {
         }
 
         stage('lint') {
+            agent {
+                docker {
+                    image 'python:3.11-alpine'
+                }
+            }
             steps {
                 script {
                     sh '''
+                        pip install flake8
                         flake8 .
                     '''
                 }
